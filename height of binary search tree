@@ -1,0 +1,33 @@
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+class BinaryTree:
+    def __init__(self):
+        self.root = None
+
+    def height(self, node):
+        if node is None:
+            return 0
+        else:
+            left_height = self.height(node.left)
+            right_height = self.height(node.right)
+            return max(left_height, right_height) + 1
+
+# Create nodes
+root = Node(10)
+root.left = Node(34)
+root.right = Node(54)
+root.left.left = Node(90)
+root.left.right = Node(69)
+root.right.left = Node(19)
+root.right.right = Node(99)
+
+# Create BinaryTree instance
+tree = BinaryTree()
+tree.root = root
+
+# Calculate height
+print("Height of the tree:", tree.height(tree.root))
